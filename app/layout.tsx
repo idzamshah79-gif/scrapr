@@ -1,14 +1,16 @@
+import './globals.css';
 import React from 'react';
 
 export const metadata = {
-  title: 'TikTok Media Scraper',
-  description: 'Download Video, Audio MP3, Slide & Live Photos',
+  title: 'Elfie Downloader — Liquid Glass Studio',
+  description: 'Download Video, Slide Video Synthesizer, Audio & Media with Liquid Glass UX',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ms">
-      <body style={{ margin: 0, padding: 0, fontFamily: 'sans-serif', background: '#0f172a', color: '#f8fafc' }}>
+    <html lang="ms" data-theme="dark">
+      <body>
+        <div className="mesh-background" />
         {children}
       </body>
     </html>

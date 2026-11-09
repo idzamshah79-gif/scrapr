@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-bg-hover: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-border-focus: rgba(96, 165, 250, 0.6);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
+  --accent-blue: #38bdf8;
+  --radius-card: 26px;
+  --radius-inner: 18px;
+  --radius-btn: 14px;
+}
+
+[data-theme='light'] {
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-hover: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-border-focus: rgba(59, 130, 246, 0.6);
+  --glass-specular: inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 20px 40px rgba(100, 116, 139, 0.15), 0 1px 3px rgba(0, 0, 0, 0.05);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-main);
+  background-color: #050814;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Animated Mesh Gradient Background */
+.mesh-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(99, 102, 241, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 50% 75%, rgba(168, 85, 247, 0.16) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(20, 184, 166, 0.15) 0%, transparent 40%);
+  filter: blur(60px);
+  animation: meshFlow 20s ease-in-out infinite alternate;
+}
+
+[data-theme='light'] .mesh-background {
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(186, 230, 253, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(199, 210, 254, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(233, 213, 255, 0.6) 0%, transparent 50%);
+}
+
+@keyframes meshFlow {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-2%, 3%); }
+  100% { transform: scale(1.02) translate(3%, -2%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh-background {
+    animation: none;
+  }
+}
+
+/* Reusable Glass Panel */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-specular), var(--glass-shadow);
+  border-radius: var(--radius-card);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.3s ease;
+}
+
+.glass-btn {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-specular);
+  color: var(--text-main);
+  border-radius: var(--radius-btn);
+  padding: 0 16px;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+}
+
+.glass-btn:hover {
+  background: var(--glass-bg-hover);
+  transform: translateY(-2px);
+}
+
+.glass-btn:active {
+  transform: scale(0.98);
+}
+
+.primary-gradient-btn {
+  background: var(--primary-gradient);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.primary-gradient-btn:hover {
+  box-shadow: 0 12px 28px -4px rgba(99, 102, 241, 0.65);
+  transform: translateY(-2px);
+}
