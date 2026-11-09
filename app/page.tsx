@@ -1,2 +1,2 @@
-import TikTokPage from './tiktok/page';
-export default TikTokPage;
+import TikTokDownloader from './tiktok/download/page';
+export default TikTokDownloader;
